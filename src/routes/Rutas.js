@@ -18,6 +18,7 @@ import { RegObjetos } from '../componentes/pages/formularios/RegObjetos';
 import { RegPartituras } from '../componentes/pages/formularios/RegPartituras';
 import { RegMonumentos } from '../componentes/pages/formularios/RegMonumentos';
 import { RegAudiovisuales } from '../componentes/pages/formularios/RegAudiovisuales';
+import { RegVideo } from '../componentes/pages/formularios/RegVideo';
 
 
 import { Cortejo } from '../componentes/pages/acervo/temas/Cortejo';
@@ -146,6 +147,7 @@ export const Rutas = () => {
             <Route path="/admin/registro/monumentos" element={<RegMonumentos />} />
             <Route path="/admin/registro/audiovisuales" element={<RegAudiovisuales />} />
             <Route path="/admin/registro/instituciones" element={<RegInstituciones />} />
+            <Route path="/admin/registro/video" element={<RegVideo />} />
 
             <Route path="/admin/fotografias" element={<Bien
               titulo="Temas de Fotografías"

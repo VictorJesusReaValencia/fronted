@@ -7,6 +7,7 @@ import "./css/RegistroFotografias.css"
 import "./css/RegistroLibros.css"
 import "./css/RegistroCorrespondencia.css"
 import "./css/RegistroMonumentos.css"
+import "./css/RegistroVideo.css"
 
 import App from './App';
 

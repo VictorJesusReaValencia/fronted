@@ -1,0 +1,125 @@
+/*----------Main y contenedor-------------*/
+.main_registro_video {
+  background-image: url(../../public/img/fondo2.jpg);
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  border-top: 4px solid #800;
+}
+
+.contenedor_registro_video {
+  max-width: 95%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Título */
+.contenedor_registro_video h1 {
+  color: #0672A8;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*---------- Formulario en Grid ----------*/
+.contenedor_registro_video form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;  /* 1fr para labels, 2fr para inputs */
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+  align-items: center;
+}
+
+/* Cada par label-input */
+.field {
+  display: contents;  /* deja que el grid del form coloque label e input */
+}
+
+/* Etiqueta alineada a la derecha */
+.field label {
+  justify-self: end;
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
+/* Inputs y textarea ocupan 100% de su celda */
+.field input,
+.field textarea {
+  justify-self: start;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Para textarea en grid */
+.field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Modificadores de ancho (si los necesitas) */
+.field--w-100 { width: 100%; }
+.field--w-80  { width: 80%;  }
+.field--w-60  { width: 60%;  }
+.field--w-40  { width: 40%;  }
+
+/* Botón */
+.button {
+  grid-column: 2 / 3; /* que ocupe la columna de inputs */
+  justify-self: start;
+  background-color: #0672A8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.button:hover {
+  opacity: 0.9;
+}
+
+/* Progress bar */
+.progress-bar {
+  grid-column: 1 / -1; /* ocupa todo el ancho del grid */
+  margin-top: 20px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  height: 20px;
+}
+.progress {
+  background: #0672A8;
+  height: 100%;
+  width: 0;
+  transition: width 0.3s;
+}
+.progress-text {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+}
+
+/* Vista previa de videos */
+.videos-preview {
+  grid-column: 1 / -1;
+  margin-top: 30px;
+}
+.videos-preview h2 {
+  color: #0672A8;
+  margin-bottom: 10px;
+}
+.videos-preview video {
+  display: block;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
