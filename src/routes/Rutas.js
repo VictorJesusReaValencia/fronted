@@ -83,6 +83,7 @@ import { Bien } from '../componentes/pages/acervo/Bien';
 import { Tema } from '../componentes/pages/acervo/Tema';
 import { PeriodicoDetalle } from '../componentes/pages/acervo/detalles/PeriodicoDetalle';
 import { Detalle } from '../componentes/pages/acervo/Detalle';
+import { Videos } from '../componentes/pages/Videos';
 
 export const Rutas = () => {
   return (
@@ -126,7 +127,7 @@ export const Rutas = () => {
             <Route path="/admin/acervo" element={<Acervo />} />
             <Route path="/admin/Tienda" element={<Tienda />} />
             <Route path="/admin/success" element={<PagoSuccess />} />
-
+            <Route path="/admin/videos" element={<Videos />} />
 
             <Route path="/admin/instituciones" element={
               <RequireRole allowedRoles={["admin", "premium"]}>

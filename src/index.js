@@ -8,7 +8,7 @@ import "./css/RegistroLibros.css"
 import "./css/RegistroCorrespondencia.css"
 import "./css/RegistroMonumentos.css"
 import "./css/RegistroVideo.css"
-
+import "./css/Videos.css"
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

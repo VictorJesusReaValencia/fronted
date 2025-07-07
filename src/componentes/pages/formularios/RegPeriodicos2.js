@@ -67,6 +67,8 @@ export const RegPeriodicos2 = () => {
     const guardar_foto = async (e) => {
         e.preventDefault();
         let nueva_foto = formulario;
+        console.log("Formulario completo:", nueva_foto);
+  console.log("Campo tomo:", nueva_foto.tomo);
         const { datos } = await Api("https://backend-prueba-apel.onrender.com/api/periodicos/registrar", "POST", nueva_foto);
         console.log(nueva_foto)
         if (datos.status === "successs") {
@@ -119,38 +121,6 @@ export const RegPeriodicos2 = () => {
                                 
 
                                 </input>
-                      {/*
-       
-      
-                                <select
-                                    id="nombrePeriodicoSelect"
-                                    name="nombre_periodico"
-                                    value={formulario.nombre_periodico || ''}
-                                    onChange={cambiado}
-                                >
-                    
-                                    <option value="">Seleccionar Periódico</option>
-                                    <option value="El Nacional">El Nacional</option>
-                                    <option value="El Imparcial">El Imparcial</option>
-                                    <option value="El Mundo">El Mundo</option>
-                                    <option value="El Mundo Ilustrado">El Mundo Ilustrado</option>
-                                    <option value="El País">El País</option>
-                                    <option value="El Paladín">El Paladín</option>
-                                    <option value="El Plata">El Plata</option>
-                                    <option value="El Siglo">El Siglo</option>
-                                    <option value="El Telégrafo">El Telégrafo</option>
-                                    <option value="La Defensa">La Defensa</option>
-                                    <option value="La Gaceta de Guadalajara">La Gaceta de Guadalajara</option>
-                                    <option value="La Mañana">La Mañana</option>
-                                    <option value="La Nación">La Nación</option>
-                                    <option value="La Razón">La Razón </option>
-                                    <option value="La Prensa">La Prensa</option>
-                                    <option value="México Libre">México Libre</option>
-
-                                </select>
-
-
-                                */}
        
                             </div>
                             
@@ -205,6 +175,20 @@ export const RegPeriodicos2 = () => {
                                     onChange={cambiado}
                                 />
                             </div>
+
+                            <div className="form-group"id="tomo">
+                                <label htmlFor="tomo" id='tomoLabel'>Tomo</label>
+                                <textarea
+                                    type="text"
+                                    id="tomoInput"
+                                    name="tomo"
+                                    placeholder="Tomo"
+                                    value={formulario.tomo|| ''}
+                                    onChange={cambiado}
+                                />
+                            </div>
+
+                            
 
                             <div className="form-group"id="transcripcion">
                                 <label htmlFor="transcripcion" id="transcripcionLabel">Pendiente</label>

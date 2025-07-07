@@ -19,7 +19,8 @@ export const Nav = () => {
           <NavLink to="/admin/instituciones">Instituciones</NavLink>
         </li>
         <li>
-          <NavLink to="/admin/Tienda">Videos</NavLink>
+          {/*<NavLink to="/admin/Tienda">Videos</NavLink>*/}
+          <NavLink to="/admin/videos">Videos</NavLink>
         </li>
          <li>
           <NavLink to="/admin/Tienda">Tienda</NavLink>
