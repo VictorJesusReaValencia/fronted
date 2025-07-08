@@ -154,9 +154,9 @@ export const Rutas = () => {
               titulo="Temas de Fotografías"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/fotografia/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/fotografia/buscar"
+              apiBuscarUrl="http://localhost:3900/api/fotografia/buscar"
               rutaItem="/admin/fotografia"
-              camposBusqueda={[]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
+              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "tema", "autor", "institucion"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
             />} />
             <Route path="/admin/fotografia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/fotografia"
@@ -202,7 +202,7 @@ export const Rutas = () => {
               campoNombre="nombre_periodico"
               rutaDetalle="/admin/hemerografia"
               rutaEditar="/admin/editar/hemerografia"
-              componenteDetalle={PeriodicoDetalle}
+              componenteDetalle={PeriodicoDetalle}//!ojito
             />} />
             <Route path="/admin/hemerografia/:id" element={<Detalle
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/hemero"
@@ -239,7 +239,7 @@ export const Rutas = () => {
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/iconografia/buscar"
               rutaItem="/admin/iconografia"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["institucion", "fecha_registro", "fecha_adquisicion", "ubicacion_fisica"]}
             />} />
             <Route path="/admin/iconografia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/iconografia"
@@ -275,7 +275,7 @@ export const Rutas = () => {
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/libros/buscar"
               rutaItem="/admin/libros"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "ciudad", "editorial", "isbn"]}
             />} />
             <Route path="/admin/libros/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/libros"
@@ -318,9 +318,9 @@ export const Rutas = () => {
               titulo="Correspondencia"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/correspondencia/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/correspondencia/buscar"
+              apiBuscarUrl="http://localhost:3900/api/correspondencia/buscar"
               rutaItem="/admin/correspondencia"
-              camposBusqueda={[]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
+              camposBusqueda={["autor", "ciudad", "destinatario", "fecha", "fecha_envio"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
               campoComparacion="nombre_periodico" // No se compara con otro dataset, así que este campo será irrelevante
             />} />
             <Route path="/admin/correspondencia/tema/:id" element={<Tema
@@ -355,9 +355,9 @@ export const Rutas = () => {
               titulo="Documentación"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/documentacion/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/documentacion/buscar"
+              apiBuscarUrl="http://localhost:3900/api/documentacion/buscar"
               rutaItem="/admin/documentacion"
-              camposBusqueda={[]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
+              camposBusqueda={["texto", "titulo", "institucion", "pais", "ciudad", "autor"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
               campoComparacion="nombre_periodico" // No se compara con otro dataset, así que este campo será irrelevante
             />} />
             <Route path="/admin/documentacion/tema/:id" element={<Tema
@@ -391,9 +391,9 @@ export const Rutas = () => {
               titulo="Partituras"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/partituras/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/partituras/buscar"
+              apiBuscarUrl="http://localhost:3900/api/partituras/buscar"
               rutaItem="/admin/partituras"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/partituras/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/partituras"
@@ -425,9 +425,9 @@ export const Rutas = () => {
               titulo="Objetos"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/objetos/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/objetos/buscar"
+              apiBuscarUrl="http://localhost:3900/api/objetos/buscar"
               rutaItem="/admin/objetos"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["texto", "pais", "institucion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/objetos/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/objetos"
@@ -459,9 +459,9 @@ export const Rutas = () => {
               titulo="monumentos"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/monumentos/listar-temas"
               apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
-              apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/monumentos/buscar"
+              apiBuscarUrl="http://localhost:3900/api/monumentos/buscar"
               rutaItem="/admin/monumentos"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["texto", "pais", "institucion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/monumentos/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/monumentos"

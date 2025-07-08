@@ -3,15 +3,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AuthContext from '../../../context/AuthProvider';
 
 export const Tema = ({
-  apiBaseUrl,             // Ej: "https://.../api/hemerografia"
-  campoNombre,            // Ej: "nombre_periodico" o "titulo_libro"
+  apiBaseUrl,
+  campoNombre,
   rutaDetalle,
-  rutaEditar,               // Ej: "/admin/hemerografia"
-  componenteDetalle: ComponenteDetalle, // Componente React opcional
-  campoImagen = "imagenes_fb",          // Por defecto "imagenes_fb"
+  rutaEditar,
+  componenteDetalle: ComponenteDetalle,
+  campoImagen = "imagenes_fb",
 }) => {
   const [registros, setRegistros] = useState([]);
   const [nombre, setNombre] = useState('');
+  const [paginaActual, setPaginaActual] = useState(1); // Página actual
+  const registrosPorPagina = 12; // Tamaño de página
   const { id } = useParams();
   const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
@@ -75,13 +77,30 @@ export const Tema = ({
     navigate(`${rutaEditar}/${idItem}`);
   };
 
+  // Calcular los registros visibles para la página actual
+  const indiceInicio = (paginaActual - 1) * registrosPorPagina;
+  const indiceFin = indiceInicio + registrosPorPagina;
+  const registrosVisibles = registros.slice(indiceInicio, indiceFin);
+
+  const avanzarPagina = () => {
+    if (paginaActual < Math.ceil(registros.length / registrosPorPagina)) {
+      setPaginaActual(paginaActual + 1);
+    }
+  };
+
+  const retrocederPagina = () => {
+    if (paginaActual > 1) {
+      setPaginaActual(paginaActual - 1);
+    }
+  };
+
   return (
     <main className='main_album'>
       <div className='container_fotografia'>
         <h1>{nombre}</h1>
         {ComponenteDetalle && <ComponenteDetalle />}
         <div className='fotografias-container'>
-          {registros.map((item) => {
+          {registrosVisibles.map((item) => {
             const imagen = item[campoImagen]?.[0]?.url || null;
             const pendiente = item.pendiente?.trim();
             const revisado = item.revisado?.trim();
@@ -112,6 +131,15 @@ export const Tema = ({
               </div>
             );
           })}
+        </div>
+        <div className='paginacion'>
+          <button onClick={retrocederPagina} disabled={paginaActual === 1}>
+            Anterior
+          </button>
+          <span>Página {paginaActual} de {Math.ceil(registros.length / registrosPorPagina)}</span>
+          <button onClick={avanzarPagina} disabled={paginaActual === Math.ceil(registros.length / registrosPorPagina)}>
+            Siguiente
+          </button>
         </div>
       </div>
     </main>
