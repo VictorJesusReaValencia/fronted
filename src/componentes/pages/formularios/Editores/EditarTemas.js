@@ -3,7 +3,7 @@ import { useForm } from '../../../../hooks/useForm';
 import { Api } from '../../../../hooks/Api';
 import React, { useEffect, useState } from 'react';
 
-export const EditarPeriodicos = () => {
+export const EditarTemas = () => {
   const { formulario, enviado, cambiado, resetFormulario, setFormulario } = useForm({});
   const [resultado, setResultado] = useState(false);
   const [fileName, setFileName] = useState('');
@@ -40,7 +40,7 @@ export const EditarPeriodicos = () => {
   }, []);
   useEffect(() => {
     const fetchFoto = async () => {
-      const url = `https://backend-prueba-apel.onrender.com/api/periodicos/id/${id}`;
+      const url = `https://backend-prueba-apel.onrender.com/api/temas/id/${id}`;
       const peticion = await fetch(url, {
         method: "GET"
       });
@@ -77,7 +77,7 @@ export const EditarPeriodicos = () => {
     e.preventDefault();
     let nueva_foto = formulario;
 
-    const { datos, cargando } = await Api("https://backend-prueba-apel.onrender.com/api/periodicos/editar/" + id, "PUT", nueva_foto);
+    const { datos, cargando } = await Api("https://backend-prueba-apel.onrender.com/api/temas/editar/" + id, "PUT", nueva_foto);
     if (datos.status == "success") {
       const fileInput = document.querySelector("#file");
       const formData = new FormData();
@@ -86,8 +86,8 @@ export const EditarPeriodicos = () => {
       });
       setSaved("saved");
 
-      const { subida2, cargando2 } = await Api("https://backend-prueba-apel.onrender.com/api/periodicos/editar-imagen/" + id, "POST", formData, true);
-      //const { subida, cargando } = await Api("https://backend-google-fnsu.onrender.com/api/periodicos/editar-imagen/" + id, "POST", formData, true);
+      const { subida2, cargando2 } = await Api("https://backend-prueba-apel.onrender.com/api/temas/editar-imagen/" + id, "POST", formData, true);
+      //const { subida, cargando } = await Api("https://backend-google-fnsu.onrender.com/api/temas/editar-imagen/" + id, "POST", formData, true);
 
       setResultado(true);
       setSaved("saved");
@@ -113,25 +113,24 @@ export const EditarPeriodicos = () => {
                     <h2>Campos generales</h2>
 
                     <div className='divisor_form'>
-                    
-                        <div className="form-group" id="nombrePeriodico">
-                            <label htmlFor="nombrePeriodico">Periódico</label>
+
+                        <div className="form-group" id="nombreTema">
+                            <label htmlFor="nombreTemaSelect">Tema</label>
                             <input
                                 type='text'
-                                id="nombrePeriodicoSelect"
-                                name="nombre_periodico"
-                                defaultValue={fotografia.nombre_periodico || ''}
+                                id="nombreTemaSelect"
+                                name="nombre_tema"
+                                defaultValue={fotografia.nombre_tema || ''}
                                 onChange={cambiado}
                             >
                 
                             
-
+    
                             </input>
                   {/*
    
   
                             <select
-                                id="nombrePeriodicoSelect"
                                 name="nombre_periodico"
                                 value={formulario.nombre_periodico || ''}
                                 onChange={cambiado}

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-export const PeriodicoDetalle = () => {
+export const TemaDetalle = () => {
   const { id } = useParams();
   const [fotografia, setFotografia] = useState(null);
   const [imagenPrincipal, setImagenPrincipal] = useState(null);
@@ -11,7 +11,7 @@ export const PeriodicoDetalle = () => {
 
   useEffect(() => {
     const fetchFoto = async () => {
-      const url = `https://backend-prueba-apel.onrender.com/api/periodicos/periodico/${id}`;
+      const url = `https://backend-prueba-apel.onrender.com/api/temas/tema/${id}`;
       const peticion = await fetch(url, {
         method: "GET"
       });
@@ -60,7 +60,7 @@ export const PeriodicoDetalle = () => {
   };
   const handleEditClick = (event, fotografiaId) => {
     event.stopPropagation();
-    navigate(`/admin/editar/periodicos/${fotografiaId}`);
+    navigate(`/admin/editar/temas/${fotografiaId}`);
   };
   const handleImagenClick = (nombreImagen) => {
     setImagenPrincipal(nombreImagen);
@@ -72,10 +72,10 @@ export const PeriodicoDetalle = () => {
      
  
        
-        <div className='ficha_periodico'>
-          <div className='marco_periodico'>
+        <div className='ficha_tema'>
+          <div className='marco_tema'>
             <img
-              src={`https://backend-prueba-apel.onrender.com/imagenes/general/Temas/hemerografia/${fotografia.nombre_periodico}.jpg`}
+              src={`https://backend-prueba-apel.onrender.com/imagenes/general/Temas/hemerografia/${fotografia.nombre_tema}.jpg`}
               alt={`${fotografia.titulo} principal`}
               className='fotografia-img-large'
             />
@@ -83,7 +83,7 @@ export const PeriodicoDetalle = () => {
               {fotografia.images && fotografia.images.map((image, index) => (
                 <img
                   key={index}
-                  src={`https://backend-prueba-apel.onrender.com/imagenes/periodicos/${image.nombre}`}
+                  src={`https://backend-prueba-apel.onrender.com/imagenes/temas/${image.nombre}`}
                   alt={`${fotografia.titulo} ${index + 1}`}
                   className='fotografia-img-thumbnail'
                   onClick={() => handleImagenClick(image.nombre)}
@@ -95,7 +95,7 @@ export const PeriodicoDetalle = () => {
             <h3>{capitalizeFirstLetter(fotografia.tipo_bien)}</h3>
             <h4>Ficha catalográfica</h4>
 
-            {renderField("Periódico", fotografia.nombre_periodico)}
+            {renderField("Tema", fotografia.nombre_tema)}
             {renderField("País", fotografia.pais)}
             {renderField("Ciudad", fotografia.ciudad)}
             <button onClick={(event) => handleEditClick(event, fotografia._id)}>Editar</button>

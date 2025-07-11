@@ -4,7 +4,7 @@ import { useForm } from '../../../hooks/useForm';
 import { Api } from '../../../hooks/Api';
 import { useState, useEffect } from 'react';
 
-export const RegPeriodicos2 = () => {
+export const RegTemas2 = () => {
     const { formulario, enviado, cambiado, resetFormulario } = useForm({})
     const [resultado, setResultado] = useState(false)
     const [fileName, setFileName] = useState('');
@@ -18,7 +18,7 @@ export const RegPeriodicos2 = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-        const url = `https://backend-prueba-apel.onrender.com/api/instituciones/listar/todo`;
+        const url = `http://localhost:3900/api/instituciones/listar/todo`;
         try {
           const response = await fetch(url, {
             method: "GET"
@@ -69,7 +69,7 @@ export const RegPeriodicos2 = () => {
         let nueva_foto = formulario;
         console.log("Formulario completo:", nueva_foto);
   console.log("Campo tomo:", nueva_foto.tomo);
-        const { datos } = await Api("https://backend-prueba-apel.onrender.com/api/periodicos/registrar", "POST", nueva_foto);
+        const { datos } = await Api("http://localhost:3900/api/temas/registrar", "POST", nueva_foto);
         console.log(nueva_foto)
         if (datos.status === "successs") {
 
@@ -78,9 +78,8 @@ export const RegPeriodicos2 = () => {
             Array.from(fileInput.files).forEach((file, index) => {
                 formData.append(`files`, file);
             });
-         
-            const { subida2 } = await Api(`https://backend-prueba-apel.onrender.com/api/periodicos/registrar-imagen/${datos.publicacionGuardada._id}`, "POST", formData, true);
-        
+
+            const { subida2 } = await Api(`http://localhost:3900/api/temas/registrar-imagen/${datos.publicacionGuardada._id}`, "POST", formData, true);
 
             setResultado(true);
             setSaved("saved");
@@ -108,13 +107,13 @@ export const RegPeriodicos2 = () => {
 
                         <div className='divisor_form'>
                         
-                            <div className="form-group" id="nombrePeriodico">
-                                <label htmlFor="nombrePeriodico">Periódico</label>
+                            <div className="form-group" id="nombreTema">
+                                <label htmlFor="nombreTemaSelect">Tema</label>
                                 <input
                                     type='text'
-                                    id="nombrePeriodicoSelect"
-                                    name="nombre_periodico"
-                                    value={formulario.nombre_periodico || ''}
+                                    id="nombreTemaSelect"
+                                    name="nombre_tema"
+                                    value={formulario.nombre_tema || ''}
                                     onChange={cambiado}
                                 >
                     
@@ -155,6 +154,31 @@ export const RegPeriodicos2 = () => {
                                 <option value="Mensual">Mensual</option>
                                 </select>
                             </div>
+
+                            <div className="form-group" id="tipoBien">
+                                <label htmlFor="tipoBienInput">Tipo de bien</label>
+                                <select
+                                    type="text"
+                                    id="tipoBienInput"
+                                    name="tipo_bien"
+                                    placeholder="Tipo de bien"
+                                    value={formulario.tipo_bien || ''}
+                                    onChange={cambiado}
+                                >
+                                <option value="">Seleccionar tipo de bien</option>
+                                <option value="Fotografia">Fotografía</option>
+                                <option value="Iconografia">Iconografía</option>
+                                <option value="Libros">Libros</option>
+                                <option value="Hemerografia">Hemerografía</option>
+                                <option value="Correspondencia">Correspondencia</option>
+                                <option value="Documentacion">Documentación</option>
+                                <option value="Partituras">Partituras</option>
+                                <option value="Objetos">Objetos</option>
+                                <option value="Monumentos">Monumentos</option>
+                                <option value="Audiovisuales">Audiovisuales</option>
+                                </select>
+                            </div>
+
                             <div className='form-group'>
                                 <label htmlFor='file0'>Imagen</label>
                                 <input type='file' name='file0' id="file" multiple/>

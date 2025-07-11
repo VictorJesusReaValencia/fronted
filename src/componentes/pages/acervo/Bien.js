@@ -8,7 +8,7 @@ export const Bien = ({
   apiBuscarUrl,
   rutaItem,
   camposBusqueda,
-  campoComparacion = 'nombre_periodico'
+  campoComparacion = 'nombre_tema'
 }) => {
   const [temas, setTemas] = useState([]);
   const [itemsReferencia, setItemsReferencia] = useState([]);
@@ -37,7 +37,7 @@ export const Bien = ({
      
 
       if (refDatos.status === 'success') {
-        setItemsReferencia(refDatos.Periodicos || refDatos.items || []);
+        setItemsReferencia(refDatos.Temas || refDatos.items || []);
        
       }
     } catch (error) {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { PeriodicoDetalle } from '../detalles/PeriodicoDetalle';
+import { TemaDetalle } from '../detalles/TemaDetalle';
 
 export const PendientesHemerografia = () => {
   const [fotos, setFotos] = useState([]);
-  const [nombrePeriodico, setNombrePeriodico] = useState('');
+  const [nombreTema, setNombreTema] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -21,8 +21,7 @@ export const PendientesHemerografia = () => {
     let datos = await peticion.json();
     if (datos.status === "success") {
       setFotos(datos.pendientes);
-      setNombrePeriodico(datos.totalPendientes)
-     
+      setNombreTema(datos.totalPendientes);
     } else {
       console.error('Error fetching photos:', datos.message);
     }
@@ -55,8 +54,8 @@ export const PendientesHemerografia = () => {
   return (
     <main className='main_album'>
       <div className='container_fotografia'>
-        <h1>Número de pendientes:{nombrePeriodico}</h1>
- 
+        <h1>Número de pendientes:{nombreTema}</h1>
+
         <div className='fotografias-container'>
           {fotos.map((fotografia) => {
             const firstImage = fotografia.images && fotografia.images.length > 0 ? fotografia.images[0].nombre : null;

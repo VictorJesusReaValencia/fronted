@@ -65,9 +65,9 @@ export const Registro = () => {
             </button>
           </NavLink>
 
-          <NavLink to="/admin/registro/periodicos2">
+          <NavLink to="/admin/registro/temas2">
             <button>
-              Periódicos
+              Temas
             </button>
           </NavLink>
           <NavLink to="/admin/registro/video">

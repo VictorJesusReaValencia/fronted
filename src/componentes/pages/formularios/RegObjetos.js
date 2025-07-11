@@ -230,9 +230,9 @@ export const RegObjetos = () => {
                                 />
                             </div>
                             <div className="form-group" id="default_objetos">
-                                <label htmlFor="nombrePeriodico">Tipo de objetos</label>
+                                <label htmlFor="nombreTema">Tipo de objetos</label>
                                 <input
-                                    id="nombrePeriodicoSelect"
+                                    id="nombreTemaSelect"
                                     type='text'
                                     name="tipo_objetos"
                                     value={formulario.tipo_objetos || ''}
@@ -295,7 +295,7 @@ export const RegObjetos = () => {
                                     value={formulario.resumen || ''}
                                     onChange={handleChange}
                                 />
-                                {(sugerencias.length > 0 && fieldName === "nombre_periodico") && (
+                                {(sugerencias.length > 0 && fieldName === "nombre_tema") && (
                                     <ul className="sugerencias-list">
                                         {sugerencias.map((sugerencia, index) => (
                                             <li key={index} onClick={() => handleSelect(sugerencia)}>

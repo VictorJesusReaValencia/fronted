@@ -146,11 +146,11 @@ export const EditarInstitucion = () => {
           <form onSubmit={guardar_foto}>
             <h2>Campos generales</h2>
             <div className='divisor_form'>
-              <div className="form-group" id="nombrePeriodico">
-                <label htmlFor="nombrePeriodico">Nombre de la institución</label>
+              <div className="form-group" id="nombreTema">
+                <label htmlFor="nombreTema">Nombre de la institución</label>
                 <input
                   type='text'
-                  id="nombrePeriodicoSelect"
+                  id="nombreTemaSelect"
                   name="nombre"
                   defaultValue={fotografia.nombre || ''}
                   onChange={cambiado}

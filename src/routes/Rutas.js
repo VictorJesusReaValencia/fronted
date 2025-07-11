@@ -11,7 +11,7 @@ import RequireRole from '../context/RequireRole';
 import { RegFotografia } from '../componentes/pages/formularios/RegFotografia';
 import { RegIconografia } from '../componentes/pages/formularios/RegIconografia';
 import { RegLibros } from '../componentes/pages/formularios/RegLibros';
-import { RegPeriodicos } from '../componentes/pages/formularios/RegPeriodicos';
+import { RegTemas } from '../componentes/pages/formularios/RegTemas';
 import { RegCorrespondencia } from '../componentes/pages/formularios/RegCorrespondencia';
 import { RegDocumentacion } from '../componentes/pages/formularios/RegDocumentacion';
 import { RegObjetos } from '../componentes/pages/formularios/RegObjetos';
@@ -72,8 +72,8 @@ import { EditarInstitucion } from '../componentes/pages/formularios/Editores/Edi
 
 import { CarpetasRecortes } from '../componentes/pages/acervo/temas/CarpetasRecortes';
 import { CarpetaRecortes } from '../componentes/pages/acervo/temas/CarpetaRecortes';
-import { RegPeriodicos2 } from '../componentes/pages/formularios/RegPeriodicos2';
-import { EditarPeriodicos } from '../componentes/pages/formularios/Editores/EditarPeriodicos';
+import { RegTemas2 } from '../componentes/pages/formularios/RegTemas2';
+import { EditarTemas } from '../componentes/pages/formularios/Editores/EditarTemas';
 import { Secciones } from '../componentes/pages/acervo/temas/Secciones';
 import { Seccion } from '../componentes/pages/acervo/temas/Seccion';
 import { PendientesHemerografia } from '../componentes/pages/acervo/temas/PendientesHemerografia';
@@ -81,7 +81,7 @@ import { PendientesHemerografia } from '../componentes/pages/acervo/temas/Pendie
 
 import { Bien } from '../componentes/pages/acervo/Bien';
 import { Tema } from '../componentes/pages/acervo/Tema';
-import { PeriodicoDetalle } from '../componentes/pages/acervo/detalles/PeriodicoDetalle';
+import { TemaDetalle } from '../componentes/pages/acervo/detalles/TemaDetalle';
 import { Detalle } from '../componentes/pages/acervo/Detalle';
 import { Videos } from '../componentes/pages/Videos';
 
@@ -102,7 +102,7 @@ export const Rutas = () => {
             <Route path="registro/fotografia" element={<RegFotografia />} />
             <Route path="registro/iconografia" element={<RegIconografia />} />
             <Route path="registro/libros" element={<RegLibros />} />
-            <Route path="registro/periodicos" element={<RegPeriodicos />} />
+            <Route path="registro/temas" element={<RegTemas />} />
             <Route path="registro/correspondencia" element={<RegCorrespondencia />} />
             <Route path="registro/documentacion" element={<RegDocumentacion />} />
             <Route path="registro/objetos" element={<RegObjetos />} />
@@ -138,9 +138,9 @@ export const Rutas = () => {
             <Route path="/admin/editar/fotografia/:id" element={<EditarFotografia />} />
             <Route path="/admin/registro/iconografia" element={<RegIconografia />} />
             <Route path="/admin/registro/libros" element={<RegLibros />} />
-            <Route path="/admin/registro/periodicos" element={<RegPeriodicos />} />
-            <Route path="/admin/registro/periodicos2" element={<RegPeriodicos2 />} />
-            <Route path="/admin/editar/periodicos/:id" element={<EditarPeriodicos />} />
+            <Route path="/admin/registro/temas" element={<RegTemas />} />
+            <Route path="/admin/registro/temas2" element={<RegTemas2 />} />
+            <Route path="/admin/editar/temas/:id" element={<EditarTemas />} />
             <Route path="/admin/registro/correspondencia" element={<RegCorrespondencia />} />
             <Route path="/admin/registro/documentacion" element={<RegDocumentacion />} />
             <Route path="/admin/registro/objetos" element={<RegObjetos />} />
@@ -153,14 +153,14 @@ export const Rutas = () => {
             <Route path="/admin/fotografias" element={<Bien
               titulo="Temas de Fotografías"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/fotografia/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/fotografia/buscar"
               rutaItem="/admin/fotografia"
               camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "tema", "autor", "institucion"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
             />} />
             <Route path="/admin/fotografia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/fotografia"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/fotografia"
               rutaEditar="/admin/editar/fotografia"
             />} />
@@ -192,17 +192,17 @@ export const Rutas = () => {
             <Route path="/admin/hemerografia" element={<Bien
               titulo="Periódicos y Revistas"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/buscar"
               rutaItem="/admin/hemerografia"
-              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "periodico"]}
+              camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "tema"]}
             />} />
             <Route path="/admin/hemerografia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/hemerografia"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/hemerografia"
               rutaEditar="/admin/editar/hemerografia"
-              componenteDetalle={PeriodicoDetalle}//!ojito
+              componenteDetalle={TemaDetalle}//!ojito
             />} />
             <Route path="/admin/hemerografia/:id" element={<Detalle
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/hemero"
@@ -212,7 +212,7 @@ export const Rutas = () => {
               camposNavegacion={["pais", "institucion", "tema"]}
               camposFicha={[
                 { etiqueta: "Título", valor: "encabezado" },
-                { etiqueta: "Periódico", valor: "nombre_periodico" },
+                { etiqueta: "Periódico", valor: "nombre_tema" },
                 { etiqueta: "Número de edición", valor: "numero_edicion" },
                 { etiqueta: "Fecha de publicación", valor: "fecha_publicacion" },
                 { etiqueta: "Autor", valor: "autor" },
@@ -236,14 +236,14 @@ export const Rutas = () => {
             <Route path="/admin/iconografia" element={<Bien
               titulo="iconografia"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/iconografia/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/iconografia/buscar"
               rutaItem="/admin/iconografia"
               camposBusqueda={["institucion", "fecha_registro", "fecha_adquisicion", "ubicacion_fisica"]}
             />} />
             <Route path="/admin/iconografia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/iconografia"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/iconografia"
               rutaEditar="/admin/editar/iconografia"
             />} />
@@ -272,14 +272,14 @@ export const Rutas = () => {
             <Route path="/admin/libros" element={<Bien
               titulo="Libros"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/libros/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/libros/buscar"
               rutaItem="/admin/libros"
               camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "ciudad", "editorial", "isbn"]}
             />} />
             <Route path="/admin/libros/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/libros"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/libros"
               rutaEditar="/admin/editar/libros"
             />} />
@@ -317,15 +317,15 @@ export const Rutas = () => {
             <Route path="/admin/correspondencia" element={<Bien
               titulo="Correspondencia"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/correspondencia/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/correspondencia/buscar"
               rutaItem="/admin/correspondencia"
               camposBusqueda={["autor", "ciudad", "destinatario", "fecha", "fecha_envio"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
-              campoComparacion="nombre_periodico" // No se compara con otro dataset, así que este campo será irrelevante
+              campoComparacion="nombre_tema" // No se compara con otro dataset, así que este campo será irrelevante
             />} />
             <Route path="/admin/correspondencia/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/correspondencia"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/correspondencia"
               rutaEditar="/admin/editar/correspondencia"
             />} />
@@ -354,15 +354,15 @@ export const Rutas = () => {
             <Route path="/admin/documentacion" element={<Bien
               titulo="Documentación"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/documentacion/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/documentacion/buscar"
               rutaItem="/admin/documentacion"
               camposBusqueda={["texto", "titulo", "institucion", "pais", "ciudad", "autor"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
-              campoComparacion="nombre_periodico" // No se compara con otro dataset, así que este campo será irrelevante
+              campoComparacion="nombre_tema" // No se compara con otro dataset, así que este campo será irrelevante
             />} />
             <Route path="/admin/documentacion/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/documentacion"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/documentacion"
               rutaEditar="/admin/editar/documentacion"
             />} />
@@ -390,14 +390,14 @@ export const Rutas = () => {
             <Route path="/admin/partituras" element={<Bien
               titulo="Partituras"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/partituras/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/partituras/buscar"
               rutaItem="/admin/partituras"
               camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/partituras/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/partituras"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/partituras"
               rutaEditar="/admin/editar/partituras"
             />} />
@@ -424,14 +424,14 @@ export const Rutas = () => {
             <Route path="/admin/objetos" element={<Bien
               titulo="Objetos"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/objetos/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/objetos/buscar"
               rutaItem="/admin/objetos"
               camposBusqueda={["texto", "pais", "institucion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/objetos/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/objetos"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/objetos"
               rutaEditar="/admin/editar/objetos"
             />} />
@@ -458,14 +458,14 @@ export const Rutas = () => {
             <Route path="/admin/monumentos" element={<Bien
               titulo="monumentos"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/monumentos/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/periodicos/listar"
+              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
               apiBuscarUrl="http://localhost:3900/api/monumentos/buscar"
               rutaItem="/admin/monumentos"
               camposBusqueda={["texto", "pais", "institucion", "ciudad", "autor"]}
             />} />
             <Route path="/admin/monumentos/tema/:id" element={<Tema
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/monumentos"
-              campoNombre="nombre_periodico"
+              campoNombre="nombre_tema"
               rutaDetalle="/admin/monumentos"
               rutaEditar="/admin/editar/monumentos"
             />} />

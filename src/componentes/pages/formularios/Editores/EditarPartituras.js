@@ -329,10 +329,10 @@ export const EditarPartituras = () => {
           <form onSubmit={guardar_foto}>
             <h2>Campos generales</h2>
             <div className='divisor_form'>
-              <div className="form-group" id="nombrePeriodico">
-                <label htmlFor="nombrePeriodico">Instrumento</label>
+              <div className="form-group" id="nombreTema">
+                <label htmlFor="nombreTema">Instrumento</label>
                 <select
-                  id="nombrePeriodicoSelect"
+                  id="nombreTemaSelect"
                   name="instrumento"
                   value={fotografia.instrumento || ''}
                   onChange={cambiado}

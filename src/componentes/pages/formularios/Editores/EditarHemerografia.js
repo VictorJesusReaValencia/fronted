@@ -319,17 +319,17 @@ export const EditarHemerografia = () => {
           <form onSubmit={guardar_foto}>
 
             <div className='divisor_form_hemerografia_1'>
-              <div className="form-group" id="periodico_hemerografia">
-                <label htmlFor="nombrePeriodico">Periódico:</label>
+              <div className="form-group" id="tema_hemerografia">
+                <label htmlFor="nombreTema">Tema:</label>
 
                 <input
                   type="text"
-                  name="nombre_periodico"
-                  value={formulario.nombre_periodico || fotografia.nombre_periodico} // Solo manejar el valor desde `value`
+                  name="nombre_tema"
+                  value={formulario.nombre_tema || fotografia.nombre_tema} // Solo manejar el valor desde `value`
                   onChange={handleChange}
                   autoComplete="off"
                 />
-                {(sugerencias.length > 0 && fieldName === "nombre_periodico") && (
+                {(sugerencias.length > 0 && fieldName === "nombre_tema") && (
                   <ul className="sugerencias-list">
                     {sugerencias.map((sugerencia, index) => (
                       <li key={index} onClick={() => handleSelect(sugerencia)}>

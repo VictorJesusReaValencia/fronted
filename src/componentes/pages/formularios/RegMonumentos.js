@@ -217,7 +217,7 @@ export const RegMonumentos = () => {
                             </div>
 
                             <div className="form-group" id="tipo_monumentos">
-                                <label htmlFor="nombrePeriodico">Tipo de monumento:</label>
+                                <label htmlFor="nombreTema">Tipo de monumento:</label>
 
 
                                 <input

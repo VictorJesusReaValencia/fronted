@@ -213,10 +213,10 @@ export const RegPartituras = () => {
 
                         <div className='divisor_form_hemerografia_1'>
 
-                            <div className="form-group" id="nombrePeriodico">
-                                <label htmlFor="nombrePeriodico">Instrumento</label>
+                            <div className="form-group" id="nombreTema">
+                                <label htmlFor="nombreTema">Instrumento</label>
                                 <select
-                                    id="nombrePeriodicoSelect"
+                                    id="nombreTemaSelect"
                                     name="instrumento"
                                     value={formulario.instrumento || ''}
                                     onChange={cambiado}

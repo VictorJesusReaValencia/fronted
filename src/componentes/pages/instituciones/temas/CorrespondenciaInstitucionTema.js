@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 export const CorrespondenciaInstitucionTema = () => {
   const [fotos, setFotos] = useState([]);
-  const [nombrePeriodico, setNombrePeriodico] = useState('');
+  const [nombreTema, setNombreTema] = useState('');
   const { institucionId, tema } = useParams();
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export const CorrespondenciaInstitucionTema = () => {
     if (datos.status === "success") {
       setFotos(datos.fotos);
       if (datos.fotos.length > 0) {
-        setNombrePeriodico(datos.fotos[0].nombre_periodico);
+        setNombreTema(datos.fotos[0].nombre_tema);
       }
     } else {
       // Manejo de error
@@ -57,7 +57,7 @@ export const CorrespondenciaInstitucionTema = () => {
   return (
     <main className='main_album'>
       <div className='container_fotografia'>
-        <h1>{nombrePeriodico}</h1>
+        <h1>{nombreTema}</h1>
         <div className='fotografias-container'>
           {fotos.map((fotografia) => {
             const firstImage = fotografia.images && fotografia.images.length > 0 ? fotografia.images[0].nombre : null;

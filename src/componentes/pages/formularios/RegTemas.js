@@ -4,7 +4,7 @@ import { useForm } from '../../../hooks/useForm';
 import { Api } from '../../../hooks/Api';
 import { useState, useEffect } from 'react';
 
-export const RegPeriodicos = () => {
+export const RegTemas = () => {
     const { formulario, enviado, cambiado, resetFormulario } = useForm({})
     //----------------------------------Paises, ciudades e instituciones ----------------------------------//
     const [data, setData] = useState(null);
@@ -284,23 +284,23 @@ export const RegPeriodicos = () => {
 
                         <div className='divisor_form_hemerografia_1'>
 
-                            <div className="form-group" id="periodico_hemerografia">
-                                <label htmlFor="nombrePeriodico">Periódico:</label>
+                            <div className="form-group" id="tema_hemerografia">
+                                <label htmlFor="nombreTema">Tema:</label>
                                 <div className='botonesIA'>
-                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('nombre_periodico', 'Dame el nombre de este periódico, solo contesta con el nombre')}></img>
-                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png' onClick={() => handleEditPromptAndAutoComplete('nombre_periodico', 'Dame el nombre de este periódico, solo contesta con el nombre')}></img>
+                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('nombre_tema', 'Dame el nombre de este periódico, solo contesta con el nombre')}></img>
+                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png' onClick={() => handleEditPromptAndAutoComplete('nombre_tema', 'Dame el nombre de este periódico, solo contesta con el nombre')}></img>
 
                                 </div>
 
 
                                 <input
                 type="text"
-                name="nombre_periodico"
-                value={formulario.nombre_periodico} // Solo manejar el valor desde `value`
+                name="nombre_tema"
+                value={formulario.nombre_tema} // Solo manejar el valor desde `value`
                 onChange={handleChange}
                 autoComplete="off"
             />
-                {(sugerencias.length > 0 && fieldName === "nombre_periodico") && (
+                {(sugerencias.length > 0 && fieldName === "nombre_tema") && (
             <ul className="sugerencias-list">
                 {sugerencias.map((sugerencia, index) => (
                     <li key={index} onClick={() => handleSelect(sugerencia)}>
@@ -355,8 +355,8 @@ export const RegPeriodicos = () => {
                             <div className="form-group" id='encabezado_hemerografia'>
                                 <label>Encabezado:</label>
                                 <div className='botonesIA'>
-                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('encabezado', 'Dame el encabezado de este periodico, solo contesta con el encabezado sin saltos de linea')}></img>
-                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png   ' onClick={() => handleEditPromptAndAutoComplete('encabezado', 'Dame el encabezado de este periodico, solo contesta con el encabezado sin saltos de linea')}></img>
+                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('encabezado', 'Dame el encabezado de este tema, solo contesta con el encabezado sin saltos de linea')}></img>
+                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png   ' onClick={() => handleEditPromptAndAutoComplete('encabezado', 'Dame el encabezado de este tema  , solo contesta con el encabezado sin saltos de linea')}></img>
 
 
                                 </div>
@@ -404,8 +404,8 @@ export const RegPeriodicos = () => {
                                 <label>Sección:</label>
                                 <div className='botonesIA'>
 
-                                <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoCompleteSelect('seccion', 'Busca si en este periodico hay alguna de estas secciones:Fuegos Fatuos, Pimientos dulces, Página literaria, Literatura, Actualidades europeas, Asuntos femeninos, Actualidades literarias, Actualidades madrileñas, La varita de la virtud, Desde parís, Desde Madrid, Actualidades, Actualidades españolas, Plaso ibañes, "El Imparcial", De Amado Nervo, La literatura maravillosa, Crónicas frívolas, Literatura nacional, Sociales, Poesía, Literaria, solo contesta con la seccion sin punto')}></img>
-                                <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('seccion',  'Busca si en este periodico hay alguna de estas secciones:Fuegos Fatuos, Pimientos dulces, Página literaria, Literatura, Actualidades europeas, Asuntos femeninos, Actualidades literarias, Actualidades madrileñas, La varita de la virtud, Desde parís, Desde Madrid, Actualidades, Actualidades españolas, Plaso ibañes, "El Imparcial", De Amado Nervo, La literatura maravillosa, Crónicas frívolas, Literatura nacional, Sociales, Poesía, Literaria, solo contesta con la seccion sin punto')}></img>
+                                <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoCompleteSelect('seccion', 'Busca si en este tema hay alguna de estas secciones:Fuegos Fatuos, Pimientos dulces, Página literaria, Literatura, Actualidades europeas, Asuntos femeninos, Actualidades literarias, Actualidades madrileñas, La varita de la virtud, Desde parís, Desde Madrid, Actualidades, Actualidades españolas, Plaso ibañes, "El Imparcial", De Amado Nervo, La literatura maravillosa, Crónicas frívolas, Literatura nacional, Sociales, Poesía, Literaria, solo contesta con la seccion sin punto')}></img>
+                                <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('seccion',  'Busca si en este tema hay alguna de estas secciones:Fuegos Fatuos, Pimientos dulces, Página literaria, Literatura, Actualidades europeas, Asuntos femeninos, Actualidades literarias, Actualidades madrileñas, La varita de la virtud, Desde parís, Desde Madrid, Actualidades, Actualidades españolas, Plaso ibañes, "El Imparcial", De Amado Nervo, La literatura maravillosa, Crónicas frívolas, Literatura nacional, Sociales, Poesía, Literaria, solo contesta con la seccion sin punto')}></img>
 
 
 
@@ -462,7 +462,7 @@ export const RegPeriodicos = () => {
                                 <div className='botonesIA'>
 
                                     <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoCompleteSelect('genero_periodistico', 'De los siguientes géneros dime cuál es más probable que sea el del periódico: notas, artículos, crónicas, frases, poesía, noticias, solo contesta con el género sin punto')}></img>
-                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('nombre_periodico', 'De los siguientes géneros dime cuál es más probable que sea el del periódico: notas, artículos, crónicas, frases, poesía, noticias, solo contesta con el género sin punto')}></img>
+                                    <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('nombre_tema', 'De los siguientes géneros dime cuál es más probable que sea el del periódico: notas, artículos, crónicas, frases, poesía, noticias, solo contesta con el género sin punto')}></img>
                                     </div>
                                 <input
                                     type='text'
@@ -576,8 +576,8 @@ export const RegPeriodicos = () => {
                                     <p>Transcripciòn</p>
                                     <div className='botonesIA_resumen_hemerografia'>
 
-                                        <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('transcripcion', 'Dame la transcripcion de este periodico')}></img>
-                                        <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('transcripcion', 'Dame la transcripcion de este periodico')}></img>
+                                        <img src='https://backend-prueba-apel.onrender.com/imagenes/general/ai.png   ' onClick={() => handleAutoComplete('transcripcion', 'Dame la transcripcion de este tema')}></img>
+                                        <img src='https://backend-prueba-apel.onrender.com/imagenes/general/chat-gpt.png ' onClick={() => handleEditPromptAndAutoComplete('transcripcion', 'Dame la transcripcion de este tema')}></img>
 
 
 

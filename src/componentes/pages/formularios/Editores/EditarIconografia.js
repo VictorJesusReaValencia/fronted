@@ -339,10 +339,10 @@ export const EditarIconografia = () => {
                 />
               </div>
               <div className="form-group" id="tipo_iconografia">
-                <label htmlFor="nombrePeriodico">Tipo de Iconografia</label>
+                <label htmlFor="nombreTema">Tipo de Iconografia</label>
                 <input
                   type='text'
-                  id="nombrePeriodicoSelect"
+                  id="nombreTemaSelect"
                   name="tipo_iconografia"
                   value={formulario.tipo_iconografia || fotografia.tipo_iconografia}
                   onChange={handleChange}

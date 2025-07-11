@@ -334,9 +334,9 @@ export const EditarObjetos = () => {
                 />
               </div>
               <div className="form-group" id="default_objetos">
-                <label htmlFor="nombrePeriodico">Tipo de objetos</label>
+                <label htmlFor="nombreTema">Tipo de objetos</label>
                 <input
-                  id="nombrePeriodicoSelect"
+                  id="nombreTemaSelect"
                   type='text'
                   name="tipo_objetos"
                   value={formulario.tipo_objetos || fotografia.tipo_objetos}

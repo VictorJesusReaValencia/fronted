@@ -183,11 +183,11 @@ export const RegInstituciones = () => {
 
                         <div className='divisor_form'>
                         
-                            <div className="form-group" id="nombrePeriodico">
-                                <label htmlFor="nombrePeriodico">Nombre de la institución</label>
+                            <div className="form-group" id="nombreTema">
+                                <label htmlFor="nombreTema">Nombre de la institución</label>
                                 <input
                                     type='text'
-                                    id="nombrePeriodicoSelect"
+                                    id="nombreTemaSelect"
                                     name="nombre"
                                     value={formulario.nombre || ''}
                                     onChange={cambiado}

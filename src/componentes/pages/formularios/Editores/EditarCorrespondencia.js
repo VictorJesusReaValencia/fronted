@@ -329,10 +329,10 @@ export const EditarCorrespondencia = () => {
                   onChange={cambiado} />
               </div>
               <div className="form-group" id="tipo_correspondencia">
-                <label htmlFor="nombrePeriodico">Tipo de correspondencia</label>
+                <label htmlFor="nombreTema">Tipo de correspondencia</label>
                 <input
                   type='text'
-                  id="nombrePeriodicoSelect"
+                  id="nombreTemaSelect"
                   name="tipo_correspondencia"
                   value={formulario.tipo_correspondencia || fotografia.tipo_correspondencia}
                   onChange={handleChange}
