@@ -9,6 +9,7 @@ import "./css/RegistroCorrespondencia.css"
 import "./css/RegistroMonumentos.css"
 import "./css/RegistroVideo.css"
 import "./css/Videos.css"
+import "./css/TemaDetalle.css"
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

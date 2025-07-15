@@ -1,12 +1,16 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useForm } from '../../../hooks/useForm';
 import { Api } from '../../../hooks/Api';
 import { useState, useEffect } from 'react';
 
 export const RegTemas2 = () => {
-    const { formulario, enviado, cambiado, resetFormulario } = useForm({})
-    const [resultado, setResultado] = useState(false)
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const temaInicial = queryParams.get('tema') || ''; // Obtener el tema de los parámetros de la URL
+
+    const { formulario, enviado, cambiado, resetFormulario } = useForm({ nombre_tema: temaInicial });
+    const [resultado, setResultado] = useState(false);
     const [fileName, setFileName] = useState('');
     const [paises, setPaises] = useState([]);
     const [ciudades, setCiudades] = useState([]);
@@ -17,38 +21,36 @@ export const RegTemas2 = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-      const fetchData = async () => {
-        const url = `http://localhost:3900/api/instituciones/listar/todo`;
-        try {
-          const response = await fetch(url, {
-            method: "GET"
-          });
-          const result = await response.json();
-          if (result.status === "success") {
-            setData(result.data);
-            setPaises(Object.keys(result.data));
-          } else {
-            // Manejo de error
-            console.error("Error al obtener los datos", result.message);
-          }
-        } catch (error) {
-          console.error("Error al realizar la petición", error);
-        }
-      };
-      fetchData();
+        const fetchData = async () => {
+            const url = `http://localhost:3900/api/instituciones/listar/todo`;
+            try {
+                const response = await fetch(url, {
+                    method: "GET"
+                });
+                const result = await response.json();
+                if (result.status === "success") {
+                    setData(result.data);
+                    setPaises(Object.keys(result.data));
+                } else {
+                    console.error("Error al obtener los datos", result.message);
+                }
+            } catch (error) {
+                console.error("Error al realizar la petición", error);
+            }
+        };
+        fetchData();
     }, []);
-    useEffect(() => {
-        setSaved("")
-    }, [formulario])
 
     useEffect(() => {
+        setSaved("");
+    }, [formulario]);
 
+    useEffect(() => {
         if (formulario.pais) {
             const ciudades = Object.keys(data[formulario.pais]);
             setCiudades(ciudades);
             if (ciudades.length === 1) {
                 setSelectedCiudad(ciudades[0]);
-
             } else {
                 setSelectedCiudad('');
                 setInstituciones([]);
@@ -63,16 +65,12 @@ export const RegTemas2 = () => {
         }
     }, [formulario.ciudad]);
 
-
     const guardar_foto = async (e) => {
         e.preventDefault();
         let nueva_foto = formulario;
         console.log("Formulario completo:", nueva_foto);
-  console.log("Campo tomo:", nueva_foto.tomo);
         const { datos } = await Api("http://localhost:3900/api/temas/registrar", "POST", nueva_foto);
-        console.log(nueva_foto)
         if (datos.status === "successs") {
-
             const fileInput = document.querySelector("#file");
             const formData = new FormData();
             Array.from(fileInput.files).forEach((file, index) => {
@@ -84,7 +82,7 @@ export const RegTemas2 = () => {
             setResultado(true);
             setSaved("saved");
         } else {
-            console.log("status error")
+            console.log("status error");
             setSaved("error");
         }
     };
@@ -93,10 +91,7 @@ export const RegTemas2 = () => {
         <div>
             <main className='main_registro'>
                 <div className='contenedor_formulario_foto'>
-
                     <h1>Formulario de registro de bienes</h1>
-
-
                     <div className='frame_botones_registro' id="regresar_boton">
                         <NavLink to="/registro">
                             <button className="button">Regresar</button>
@@ -104,9 +99,7 @@ export const RegTemas2 = () => {
                     </div>
                     <form onSubmit={guardar_foto}>
                         <h2>Campos generales</h2>
-
                         <div className='divisor_form'>
-                        
                             <div className="form-group" id="nombreTema">
                                 <label htmlFor="nombreTemaSelect">Tema</label>
                                 <input
@@ -115,12 +108,7 @@ export const RegTemas2 = () => {
                                     name="nombre_tema"
                                     value={formulario.nombre_tema || ''}
                                     onChange={cambiado}
-                                >
-                    
-                                
-
-                                </input>
-       
+                                />
                             </div>
                             
                             <div className="form-group" id="numeroEdicion">
@@ -293,5 +281,5 @@ export const RegTemas2 = () => {
                 </div>
             </main>
         </div>
-    )
-}
+    );
+};

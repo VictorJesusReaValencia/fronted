@@ -11,7 +11,7 @@ export const TemaDetalle = () => {
 
   useEffect(() => {
     const fetchFoto = async () => {
-      const url = `https://backend-prueba-apel.onrender.com/api/temas/tema/${id}`;
+      const url = `http://localhost:3900/api/temas/tema/${id}`;
       const peticion = await fetch(url, {
         method: "GET"
       });
@@ -20,7 +20,7 @@ export const TemaDetalle = () => {
       if (datos.status === "success") {
         setFotografia(datos.hemero);
         if (datos.hemero.images && datos.hemero.images.length > 0) {
-          setImagenPrincipal(datos.hemero.images[0].nombre); // Establecer la primera imagen como principal
+          setImagenPrincipal(datos.hemero.imagenes_fb[0].url); // Establecer la primera imagen como principal
         }
       } else {
         // Manejo de error
@@ -47,6 +47,9 @@ export const TemaDetalle = () => {
   };
 
   const capitalizeFirstLetter = (string) => {
+    if (!string || typeof string !== 'string') {
+      return ''; // Retorna una cadena vacía si el argumento no es válido
+    }
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
@@ -75,7 +78,7 @@ export const TemaDetalle = () => {
         <div className='ficha_tema'>
           <div className='marco_tema'>
             <img
-              src={`https://backend-prueba-apel.onrender.com/imagenes/general/Temas/hemerografia/${fotografia.nombre_tema}.jpg`}
+              src={`${fotografia.imagenes_fb[0].url}`}
               alt={`${fotografia.titulo} principal`}
               className='fotografia-img-large'
             />

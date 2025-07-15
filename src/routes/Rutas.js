@@ -192,7 +192,7 @@ export const Rutas = () => {
             <Route path="/admin/hemerografia" element={<Bien
               titulo="Periódicos y Revistas"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
+              apiItemsUrl="http://localhost:3900/api/temas/listar/hemerografia"
               apiBuscarUrl="https://backend-prueba-apel.onrender.com/api/hemerografia/buscar"
               rutaItem="/admin/hemerografia"
               camposBusqueda={["texto", "anioInicio", "anioFin", "fecha_publicacion", "pais", "ciudad", "tema"]}
@@ -354,7 +354,7 @@ export const Rutas = () => {
             <Route path="/admin/documentacion" element={<Bien
               titulo="Documentación"
               apiTemasUrl="https://backend-prueba-apel.onrender.com/api/documentacion/listar-temas"
-              apiItemsUrl="https://backend-prueba-apel.onrender.com/api/temas/listar"
+              apiItemsUrl="http://localhost:3900/api/temas/listar/documentacion" //! ojito
               apiBuscarUrl="http://localhost:3900/api/documentacion/buscar"
               rutaItem="/admin/documentacion"
               camposBusqueda={["texto", "titulo", "institucion", "pais", "ciudad", "autor"]} // No se necesita búsqueda aquí, pero puedes poner campos si lo agregas después
@@ -365,6 +365,7 @@ export const Rutas = () => {
               campoNombre="nombre_tema"
               rutaDetalle="/admin/documentacion"
               rutaEditar="/admin/editar/documentacion"
+              componenteDetalle={TemaDetalle}//!ojito
             />} />
             <Route path="/admin/documentacion/:id" element={<Detalle
               apiBaseUrl="https://backend-prueba-apel.onrender.com/api/documentacion/docu"

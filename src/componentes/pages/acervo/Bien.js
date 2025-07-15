@@ -37,7 +37,7 @@ export const Bien = ({
      
 
       if (refDatos.status === 'success') {
-        setItemsReferencia(refDatos.Temas || refDatos.items || []);
+        setItemsReferencia(refDatos.tema || refDatos.items || []);
        
       }
     } catch (error) {
@@ -127,27 +127,49 @@ export const Bien = ({
           </div>
         ) : filtrosVacios() ? (
           <div>
-            {temas.map((tema, index) => (
-              <div
-                key={index}
-                className='temas_contenedor'
-                onClick={() => handleTemaClick(tema.tema)}
-              >
-                <article>
-                  <img
-                    id='img_temas'
-                    src={getImagenDelTema(tema.tema)}
-                    alt={`Imagen representativa de ${tema.tema}`}
-                  />
-                  <div className="contenido_temas">
-                    <h3>{tema.tema}</h3>
-                    <p>Total: {tema.numeroDeFotos}</p>
-                    <p>Revisados: {tema.revisados}</p>
-                    <p>Pendientes: {tema.pendientes}</p>
-                  </div>
-                </article>
-              </div>
-            ))}
+            {temas.map((tema, index) => {
+              const temaRelacionado = itemsReferencia.find(item => item[campoComparacion] === tema.tema);
+
+              return (
+                <div
+                  key={index}
+                  className='temas_contenedor'
+                  onClick={() => handleTemaClick(tema.tema)} // Agregar el evento onClick aquí
+                >
+                  <article>
+                    <img
+                      id='img_temas'
+                      src={getImagenDelTema(tema.tema)}
+                      alt={`Imagen representativa de ${tema.tema}`}
+                    />
+                    <div className="contenido_temas">
+                      <h3>{tema.tema}</h3>
+                      <p>Total: {tema.numeroDeFotos}</p>
+                      <p>Revisados: {tema.revisados}</p>
+                      <p>Pendientes: {tema.pendientes}</p>
+                      <button onClick={(e) => {
+                        e.stopPropagation(); // Evitar que el clic en el botón active el evento del contenedor
+                        navigate(`/admin/registro/temas2?tema=${tema.tema}`);
+                      }}>
+                        Añadir imagen
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation(); // Evitar que el clic en el botón active el evento del contenedor
+                          if (temaRelacionado) {
+                            navigate(`/admin/editar/temas/${temaRelacionado._id}`);
+                          } else {
+                            alert('No hay registro para editar');
+                          }
+                        }}
+                      >
+                        Editar imagen
+                      </button>
+                    </div>
+                  </article>
+                </div>
+              );
+            })}
           </div>
         ) : (
           <p>No hay resultados que coincidan con los filtros.</p>

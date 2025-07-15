@@ -19,7 +19,7 @@ export const EditarTemas = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = `https://backend-prueba-apel.onrender.com/api/instituciones/listar/todo`;
+      const url = `http://localhost:3900/api/instituciones/listar/todo`;
       try {
         const response = await fetch(url, {
           method: "GET"
@@ -40,7 +40,7 @@ export const EditarTemas = () => {
   }, []);
   useEffect(() => {
     const fetchFoto = async () => {
-      const url = `https://backend-prueba-apel.onrender.com/api/temas/id/${id}`;
+      const url = `http://localhost:3900/api/temas/id/${id}`;
       const peticion = await fetch(url, {
         method: "GET"
       });
@@ -77,7 +77,7 @@ export const EditarTemas = () => {
     e.preventDefault();
     let nueva_foto = formulario;
 
-    const { datos, cargando } = await Api("https://backend-prueba-apel.onrender.com/api/temas/editar/" + id, "PUT", nueva_foto);
+    const { datos, cargando } = await Api("http://localhost:3900/api/temas/editar/" + id, "PUT", nueva_foto);
     if (datos.status == "success") {
       const fileInput = document.querySelector("#file");
       const formData = new FormData();
@@ -86,7 +86,7 @@ export const EditarTemas = () => {
       });
       setSaved("saved");
 
-      const { subida2, cargando2 } = await Api("https://backend-prueba-apel.onrender.com/api/temas/editar-imagen/" + id, "POST", formData, true);
+      const { subida2, cargando2 } = await Api("http://localhost:3900/api/temas/editar-imagen/" + id, "POST", formData, true);
       //const { subida, cargando } = await Api("https://backend-google-fnsu.onrender.com/api/temas/editar-imagen/" + id, "POST", formData, true);
 
       setResultado(true);
