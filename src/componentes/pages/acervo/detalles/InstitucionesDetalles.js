@@ -41,7 +41,7 @@ export const InstitucionesDetalle = () => {
         const responses = await Promise.all([
           fetch(`https://backend-prueba-apel.onrender.com/api/fotografia/numero-institucion/${nombreInstitucion}`),
           fetch(`https://backend-prueba-apel.onrender.com/api/documentacion/numero-institucion/${nombreInstitucion}`),
-          fetch(`https://backend-prueba-apel.onrender.com/api/correspondencia/numero-institucion/${nombreInstitucion}`),
+          fetch(`http://localhost:3900/api/correspondencia/numero-institucion/${nombreInstitucion}`),
           fetch(`https://backend-prueba-apel.onrender.com/api/iconografia/numero-institucion/${nombreInstitucion}`),
           fetch(`https://backend-prueba-apel.onrender.com/api/libros/numero-institucion/${nombreInstitucion}`),
           fetch(`https://backend-prueba-apel.onrender.com/api/hemerografia/numero-institucion/${nombreInstitucion}`),
